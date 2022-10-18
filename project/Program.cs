@@ -1,12 +1,11 @@
-﻿Console.OutputEncoding = System.Text.Encoding.UTF8;
-
+﻿
 string [] arrayCharsAndDigits = new string [new Random().Next(5,20)]; 
 
-string [] FillArray (string[] array)
+string [] FillArray (string [] array) 
 {
-    for (int i = 1; i < array.Length; i++)
+    for (int i = 0; i < array.Length; i ++)
     {
-        char[] CharsArray = new char[new Random().Next(5,15)];
+        char [] CharsArray = new char [new Random().Next(5,15)];
         for (int k = 0; k < CharsArray.Length; k++)
         {
             CharsArray[k] = Convert.ToChar(new Random().Next(33, 123));
@@ -16,7 +15,6 @@ string [] FillArray (string[] array)
     }
     return array;
 }
-
 FillArray(arrayCharsAndDigits);
 
 string [] DeleteDig (string[] array)
@@ -24,9 +22,8 @@ string [] DeleteDig (string[] array)
     string [] onlyChars = new string [array.Length];
     for (int i = 0; i < array.Length; i++)
     {
-        string size = array[i];
         string onlyChar = string.Empty;
-        for (int k = 0; k < size.Length; k++)
+        for (int k = 0; k < array[i].Length; k++)
         {
             if ((Convert.ToInt32(array[i][k]) < 48) || (Convert.ToInt32(array[i][k]) > 57))
             {
@@ -38,8 +35,6 @@ string [] DeleteDig (string[] array)
     return onlyChars;
 }
 
-DeleteDig(arrayCharsAndDigits);
-
 void PrintArray(string[]array)
 {
     for (int i = 0; i < array.Length; i++)
@@ -48,3 +43,7 @@ void PrintArray(string[]array)
     }
 }
 PrintArray(arrayCharsAndDigits);
+
+string [] arrayOnlyChars = DeleteDig(arrayCharsAndDigits);
+Console.WriteLine();
+PrintArray (arrayOnlyChars);
